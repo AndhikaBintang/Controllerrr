@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float jump;
     public bool isJumping;
+    public ShardManager sm;
 
     private Rigidbody2D rb;
     // Start is called before the first frame update
@@ -42,6 +43,15 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             isJumping = true;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Shard"))
+        {
+            Destroy(other.gameObject);
+            sm.shardCount++;
         }
     }
 }

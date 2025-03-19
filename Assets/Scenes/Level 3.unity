@@ -547,8 +547,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c41fe14f722ba45be8fb24451b972a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPoint: {fileID: 0}
-  Player: {fileID: 0}
+  startPoint: {fileID: 560055043}
+  Player: {fileID: 230224099}
 --- !u!114 &187531504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,7 +646,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.1249999
+  m_Radius: 8.52
 --- !u!212 &187531508
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -977,7 +977,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.15
+  m_Radius: 8.52
 --- !u!114 &230224104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -993,6 +993,7 @@ MonoBehaviour:
   speed: 7
   jump: 500
   isJumping: 0
+  sm: {fileID: 0}
 --- !u!1 &265149576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,7 +1287,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.1249999
+  m_Radius: 8.52
 --- !u!212 &273705833
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2223,7 +2224,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.1249999
+  m_Radius: 8.52
 --- !u!212 &889543917
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2892,7 +2893,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.1249999
+  m_Radius: 8.52
 --- !u!212 &1159235290
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3527,7 +3528,7 @@ Transform:
   m_GameObject: {fileID: 1832284461}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.62, y: 6.95, z: 0}
+  m_LocalPosition: {x: -4.85, y: 4.08, z: 0}
   m_LocalScale: {x: 6.29322, y: 6.29322, z: 6.29322}
   m_ConstrainProportionsScale: 0
   m_Children: []
