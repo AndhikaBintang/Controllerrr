@@ -1188,8 +1188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c41fe14f722ba45be8fb24451b972a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPoint: {fileID: 0}
-  Player: {fileID: 0}
+  startPoint: {fileID: 560055043}
+  Player: {fileID: 230224099}
 --- !u!114 &273705829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1698,7 +1698,7 @@ Transform:
   m_GameObject: {fileID: 560055043}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: -2.42, z: 0}
+  m_LocalPosition: {x: 0.02, y: 3.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2125,8 +2125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c41fe14f722ba45be8fb24451b972a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPoint: {fileID: 0}
-  Player: {fileID: 0}
+  startPoint: {fileID: 560055043}
+  Player: {fileID: 230224099}
 --- !u!114 &889543913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2794,8 +2794,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c41fe14f722ba45be8fb24451b972a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPoint: {fileID: 0}
-  Player: {fileID: 0}
+  startPoint: {fileID: 560055043}
+  Player: {fileID: 230224099}
 --- !u!114 &1159235286
 MonoBehaviour:
   m_ObjectHideFlags: 0
