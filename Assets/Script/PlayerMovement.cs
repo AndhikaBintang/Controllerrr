@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     public float jump;
     public bool isJumping;
     public ShardManager sm;
+    public Vector2 ballSize;
+    public float castDistance;
+    public LayerMask groundLayer;
 
     private Rigidbody2D rb;
     // Start is called before the first frame update
@@ -24,27 +27,49 @@ public class PlayerMovement : MonoBehaviour
         Move = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(speed * Move, rb.velocity.y);
 
-        if(Input.GetButtonDown("Jump")&& isJumping== false)
+        if(Input.GetButtonDown("Jump")&& isGrounded())
         {
             rb.AddForce(new Vector2(rb.velocity.x, jump));
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    public bool isGrounded()
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if(Physics2D.BoxCast(transform.position, ballSize,0,-transform.up, castDistance, groundLayer))
         {
-            isJumping = false;
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
-    private void OnCollisionExit2D(Collision2D other)
+    private void OnDrawGizmos()
     {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            isJumping = true;
-        }
+        Gizmos.DrawWireCube(transform.position-transform.up * castDistance, ballSize);
     }
+
+    //private void OnCollisionEnter2D(Collision2D other)
+    //{
+    //    if (other.gameObject.CompareTag("Ground"))
+    //    {
+    //        Vector3 normal = other.GetContact(0).normal;
+    //        if (normal == Vector3.up)
+    //        {
+    //            isJumping = false;
+    //        }
+
+    //    }
+    //}
+
+    //private void OnCollisionExit2D(Collision2D other)
+    //{
+    //    if (other.gameObject.CompareTag("Ground"))
+    //    {
+    //        isJumping = true;
+    //    }
+    //}
 
     void OnTriggerEnter2D(Collider2D other)
     {

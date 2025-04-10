@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 34112957}
   - component: {fileID: 34112956}
   - component: {fileID: 34112955}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (9)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1290,7 +1290,7 @@ GameObject:
   - component: {fileID: 204397971}
   - component: {fileID: 204397970}
   - component: {fileID: 204397969}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1750,6 +1750,11 @@ MonoBehaviour:
   jump: 500
   isJumping: 0
   sm: {fileID: 0}
+  ballSize: {x: 1.94, y: 1.94}
+  castDistance: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &259542423
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,7 +1797,7 @@ GameObject:
   - component: {fileID: 260165022}
   - component: {fileID: 260165021}
   - component: {fileID: 260165020}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (5)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2448,7 +2453,7 @@ GameObject:
   - component: {fileID: 507007538}
   - component: {fileID: 507007537}
   - component: {fileID: 507007536}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (7)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2745,6 +2750,98 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.02, y: -2.42, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &561907127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 561907130}
+  - component: {fileID: 561907129}
+  - component: {fileID: 561907128}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &561907128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561907127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8c41fe14f722ba45be8fb24451b972a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPoint: {fileID: 0}
+  Player: {fileID: 0}
+--- !u!61 &561907129
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561907127}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 184.85, y: 2.19}
+  m_EdgeRadius: 0
+--- !u!4 &561907130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561907127}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 80.6, y: -10.7, z: -0.30713782}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3086,7 +3183,7 @@ GameObject:
   - component: {fileID: 697515911}
   - component: {fileID: 697515910}
   - component: {fileID: 697515909}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (8)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3216,7 +3313,7 @@ GameObject:
   - component: {fileID: 785332315}
   - component: {fileID: 785332314}
   - component: {fileID: 785332313}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (10)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4099,7 +4196,7 @@ GameObject:
   - component: {fileID: 1063169267}
   - component: {fileID: 1063169266}
   - component: {fileID: 1063169265}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (4)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4441,7 +4538,7 @@ GameObject:
   - component: {fileID: 1239589963}
   - component: {fileID: 1239589962}
   - component: {fileID: 1239589961}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (6)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4571,7 +4668,7 @@ GameObject:
   - component: {fileID: 1266654320}
   - component: {fileID: 1266654319}
   - component: {fileID: 1266654318}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (11)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -6497,3 +6594,4 @@ SceneRoots:
   - {fileID: 545906945}
   - {fileID: 1063998460}
   - {fileID: 1430570803}
+  - {fileID: 561907130}
