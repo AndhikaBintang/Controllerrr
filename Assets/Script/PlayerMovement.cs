@@ -50,6 +50,11 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawWireCube(transform.position-transform.up * castDistance, ballSize);
     }
 
+    public Vector3 GetPosition()
+    {
+        return transform.position;
+    }
+
     //private void OnCollisionEnter2D(Collision2D other)
     //{
     //    if (other.gameObject.CompareTag("Ground"))
