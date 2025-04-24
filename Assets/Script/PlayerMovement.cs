@@ -15,9 +15,11 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private bool facingRight = true;
     private bool doubleJumpAvailable;
+    private Animator anim;
 
     void Start()
     {
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -54,6 +56,15 @@ public class PlayerMovement : MonoBehaviour
             Flip();
         else if (moveInput < 0 && facingRight)
             Flip();
+        if (moveInput != 0)
+        {
+            anim.SetBool("isRunning", true);
+        }
+        else
+        {
+            anim.SetBool("isRunning", false);
+        }
+        anim.SetBool("isJumping", !isGrounded());
     }
 
     // Ground check via BoxCast
