@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float castDistance;
     public LayerMask groundLayer;
 
+    bool facingRight = true;
     private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,14 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetButtonDown("Jump")&& isGrounded())
         {
             rb.AddForce(new Vector2(rb.velocity.x, jump));
+        }
+        if (Move > 0 && !facingRight)
+        {
+            Flip();
+        }
+        if (Move < 0 && facingRight)
+        {
+            Flip();
         }
     }
 
@@ -55,6 +64,12 @@ public class PlayerMovement : MonoBehaviour
         return transform.position;
     }
 
+    void Flip()
+    {
+        Vector3 currentScale = gameObject.transform.localScale;
+        currentScale.x *= -1;
+        facingRight = !facingRight;
+    }
     //private void OnCollisionEnter2D(Collision2D other)
     //{
     //    if (other.gameObject.CompareTag("Ground"))
