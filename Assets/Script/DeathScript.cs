@@ -3,47 +3,35 @@ using UnityEngine.SceneManagement;
 
 public class DeathScript : MonoBehaviour
 {
-    public GameObject startPoint;
-    public GameObject player;
+    [Tooltip("Drag & drop panel GameOver UI di sini")]
     public GameObject gameOverUI;
-    private GameController playerRef;
+    [Tooltip("(Optional) titik respawn jika mau pake respawn")]
+    public Transform startPoint;
 
-    private void Start()
+    void Start()
     {
-        playerRef = player.GetComponent<GameController>();
+        Cursor.visible = false;
     }
-
-    // Use this if your Death collider is NOT a trigger:
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            // optional respawn:
-            // player.transform.position = startPoint.transform.position;
+        // 1) Cek tag Player
+        if (!other.CompareTag("Player")) return;
 
-            playerRef.GameOver();
-            ShowGameOverUI();
-        }
-    }
+        
 
-    // Or if Death is set as a trigger, use this instead:
-    // private void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if (other.CompareTag("Player"))
-    //     {
-    //         playerRef.GameOver();
-    //         ShowGameOverUI();
-    //     }
-    // }
+        // 3) Panggil GameOver di GameController
+        var gc = other.GetComponent<GameController>();
+        if (gc != null)
+            gc.GameOver();
 
-    private void ShowGameOverUI()
-    {
+        // 4) Tampilkan UI
         Time.timeScale = 0f;
-        gameOverUI.SetActive(true);
+        if (gameOverUI != null)
+            gameOverUI.SetActive(true);
         Cursor.visible = true;
     }
 
-    // And hook these up to your GameOver buttons:
+    // Tombol UI
     public void RestartLevel()
     {
         Time.timeScale = 1f;

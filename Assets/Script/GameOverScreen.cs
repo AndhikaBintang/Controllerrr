@@ -9,10 +9,12 @@ public class GameOverScreen : MonoBehaviour
 {
 
     [SerializeField]TMP_Text Shards;
-        
+    [SerializeField] GameObject overScreen;
+
+    
     public void setup(int score)
     {
-        gameObject.SetActive(true);
+        overScreen.SetActive(true);
         Shards.text = score.ToString() + "Shards";
     }
     public void RestartButton()
