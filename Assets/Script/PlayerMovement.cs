@@ -5,95 +5,90 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
-    private float Move;
-
-    public float jump;
-    public bool isJumping;
+    public float jumpForce;
     public ShardManager sm;
-    public Vector2 ballSize;
+    public Vector2 boxSize;
     public float castDistance;
     public LayerMask groundLayer;
 
-    bool facingRight = true;
+    private float moveInput;
     private Rigidbody2D rb;
-    // Start is called before the first frame update
+    private bool facingRight = true;
+    private bool doubleJumpAvailable;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Move = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(speed * Move, rb.velocity.y);
+        // 1) Horizontal movement
+        moveInput = Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
 
-        if(Input.GetButtonDown("Jump")&& isGrounded())
+        // 2) Reset double jump when grounded
+        if (isGrounded())
         {
-            rb.AddForce(new Vector2(rb.velocity.x, jump));
+            doubleJumpAvailable = true;
         }
-        if (Move > 0 && !facingRight)
+
+        // 3) Jump logic
+        if (Input.GetButtonDown("Jump"))
         {
+            if (isGrounded())
+            {
+                // First jump
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            }
+            else if (doubleJumpAvailable)
+            {
+                // Double jump
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                doubleJumpAvailable = false;
+            }
+        }
+
+        // 4) Flip sprite
+        if (moveInput > 0 && !facingRight)
             Flip();
-        }
-        if (Move < 0 && facingRight)
-        {
+        else if (moveInput < 0 && facingRight)
             Flip();
-        }
     }
 
-    public bool isGrounded()
+    // Ground check via BoxCast
+    private bool isGrounded()
     {
-        if(Physics2D.BoxCast(transform.position, ballSize,0,-transform.up, castDistance, groundLayer))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return Physics2D.BoxCast(
+            transform.position,
+            boxSize,
+            0f,
+            Vector2.down,
+            castDistance,
+            groundLayer
+        );
     }
 
-    private void OnDrawGizmos()
+    void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(transform.position-transform.up * castDistance, ballSize);
-    }
-
-    public Vector3 GetPosition()
-    {
-        return transform.position;
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(
+            transform.position + Vector3.down * castDistance,
+            boxSize
+        );
     }
 
     void Flip()
     {
-        Vector3 currentScale = gameObject.transform.localScale;
-        currentScale.x *= -1;
         facingRight = !facingRight;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
-    //private void OnCollisionEnter2D(Collision2D other)
-    //{
-    //    if (other.gameObject.CompareTag("Ground"))
-    //    {
-    //        Vector3 normal = other.GetContact(0).normal;
-    //        if (normal == Vector3.up)
-    //        {
-    //            isJumping = false;
-    //        }
-
-    //    }
-    //}
-
-    //private void OnCollisionExit2D(Collision2D other)
-    //{
-    //    if (other.gameObject.CompareTag("Ground"))
-    //    {
-    //        isJumping = true;
-    //    }
-    //}
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Shard"))
+        if (other.CompareTag("Shard"))
         {
             Destroy(other.gameObject);
             sm.shardCount++;

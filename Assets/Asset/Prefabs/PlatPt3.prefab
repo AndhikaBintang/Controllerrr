@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 9196174613623045223}
   m_Layer: 0
   m_Name: isolated-dirt-ground-with-green-grass-free-vector (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1096,7 +1096,7 @@ GameObject:
   - component: {fileID: 6472704179923930487}
   m_Layer: 0
   m_Name: isolated-dirt-ground-with-green-grass-free-vector
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1402,7 +1402,7 @@ GameObject:
   - component: {fileID: 6961963302148186031}
   m_Layer: 0
   m_Name: isolated-dirt-ground-with-green-grass-free-vector (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
