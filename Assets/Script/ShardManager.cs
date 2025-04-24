@@ -6,10 +6,15 @@ using TMPro;
 
 public class ShardManager : MonoBehaviour
 {
-    public int shardCount;
     public TMP_Text shardText;
+    public TMP_Text gameOverPoints;
     public GameObject door;
     private bool doorDestroyed;
+
+
+ 
+    public int shardCount;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +26,7 @@ public class ShardManager : MonoBehaviour
     void Update()
     {
         shardText.text = ": " + shardCount.ToString();
-        
+        gameOverPoints.text = "Points : " + shardCount.ToString();
         if(shardCount == 10 && !doorDestroyed)
         {
             doorDestroyed = true;
