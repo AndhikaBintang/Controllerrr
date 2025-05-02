@@ -431,7 +431,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 1
-  m_GravityScale: 2
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -523,7 +523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  jumpForce: 15
+  jumpForce: 20
   sm: {fileID: 1305388372}
   boxSize: {x: 1.62, y: 2.05}
   castDistance: 0.07
@@ -2969,7 +2969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6a04642aa39314c8e95f7c97c4e969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Shards: {fileID: 284265500}
+  Shards: {fileID: 789291504}
   overScreen: {fileID: 118349852}
 --- !u!1 &1029688277
 GameObject:
