@@ -1,21 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO.Ports;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed;
-    public float jumpForce;
+    public float speed = 5f;
+    public float jumpForce = 10f;
     public ShardManager sm;
-    public Vector2 boxSize;
-    public float castDistance;
+    public Vector2 boxSize = new Vector2(0.5f, 0.1f);
+    public float castDistance = 0.1f;
     public LayerMask groundLayer;
 
     private float moveInput;
     private Rigidbody2D rb;
     private bool facingRight = true;
-    private bool doubleJumpAvailable;
     private Animator anim;
+    private bool hasJumped = false;
+
+    public MPUReader mpu; // assign via inspector
 
     void Start()
     {
@@ -25,50 +28,41 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // 1) Horizontal movement
+        // Handle horizontal movement
         moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
 
-        // 2) Reset double jump when grounded
-        if (isGrounded())
-        {
-            doubleJumpAvailable = true;
-        }
-
-        // 3) Jump logic
-        if (Input.GetButtonDown("Jump"))
-        {
-            if (isGrounded())
-            {
-                // First jump
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            }
-            else if (doubleJumpAvailable)
-            {
-                // Double jump
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                doubleJumpAvailable = false;
-            }
-        }
-
-        // 4) Flip sprite
+        // Flip sprite based on movement
         if (moveInput > 0 && !facingRight)
             Flip();
         else if (moveInput < 0 && facingRight)
             Flip();
-        if (moveInput != 0)
+
+        // Reset hasJumped if grounded and pitch netral
+        if (isGrounded() && Mathf.Abs(mpu.pitch) < 15f)
         {
-            anim.SetBool("isRunning", true);
+            hasJumped = false;
         }
-        else
+
+        // Jump detection based on MPU pitch
+        if (mpu.pitch > 30f && isGrounded() && !hasJumped)
         {
-            anim.SetBool("isRunning", false);
+            Jump();
+            hasJumped = true;
         }
+
+        // Set animations
+        anim.SetBool("isRunning", moveInput != 0);
         anim.SetBool("isJumping", !isGrounded());
     }
 
-    // Ground check via BoxCast
-    private bool isGrounded()
+    void Jump()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, 0f); // reset y-velocity
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+    }
+
+    bool isGrounded()
     {
         return Physics2D.BoxCast(
             transform.position,
