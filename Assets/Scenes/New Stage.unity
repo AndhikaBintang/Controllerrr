@@ -523,7 +523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  jumpForce: 20
+  jumpForce: 30
   sm: {fileID: 1305388372}
   boxSize: {x: 1.62, y: 2.05}
   castDistance: 0.07
