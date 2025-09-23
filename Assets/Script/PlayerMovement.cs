@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO.Ports;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -38,14 +37,14 @@ public class PlayerMovement : MonoBehaviour
         else if (moveInput < 0 && facingRight)
             Flip();
 
-        // Reset hasJumped if grounded and pitch netral
+        // Reset jump state if grounded and pitch netral
         if (isGrounded() && Mathf.Abs(mpu.pitch) < 15f)
         {
             hasJumped = false;
         }
 
-        // Jump detection based on MPU pitch
-        if (mpu.pitch > 30f && isGrounded() && !hasJumped)
+        // Jump detection from MPU OR Keyboard
+        if ((mpu.pitch > 30f || Input.GetButtonDown("Jump")) && isGrounded() && !hasJumped)
         {
             Jump();
             hasJumped = true;
